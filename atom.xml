@@ -43,7 +43,7 @@
     <link href="http://yoursite.com/2019/07/15/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/"/>
     <id>http://yoursite.com/2019/07/15/图片测试/</id>
     <published>2019-07-15T02:58:38.000Z</published>
-    <updated>2019-07-18T08:43:39.328Z</updated>
+    <updated>2019-07-19T03:27:36.799Z</updated>
     
     <content type="html"><![CDATA[<p>hexo图片插入方式</p><a id="more"></a><h3 id="第一种方式："><a href="#第一种方式：" class="headerlink" title="第一种方式："></a>第一种方式：</h3><img src="/2019/07/15/图片测试/07/15/图片测试/bg-2.jpg" title="This is an image"><p>失败！</p><h3 id="第二种方式-bg-2-jpg"><a href="#第二种方式-bg-2-jpg" class="headerlink" title="第二种方式![](bg-2.jpg)"></a>第二种方式<code>![](bg-2.jpg)</code></h3><p><img src="/2019/07/15/图片测试/bg-2.jpg" alt><br>成功！</p><h3 id="第三种方式-lt-img-src-quot-2019-07-15-图片测试：文章（带图片）-bg-2-jpg-quot-alt-quot-logo-quot-gt-："><a href="#第三种方式-lt-img-src-quot-2019-07-15-图片测试：文章（带图片）-bg-2-jpg-quot-alt-quot-logo-quot-gt-：" class="headerlink" title="第三种方式&lt;img src=&quot;2019\07\15\图片测试：文章（带图片）/bg-2.jpg&quot; alt=&quot;logo&quot;&gt;："></a>第三种方式<code>&lt;img src=&quot;2019\07\15\图片测试：文章（带图片）/bg-2.jpg&quot; alt=&quot;logo&quot;&gt;</code>：</h3><img src="/2019/07/15/图片测试/07\15\图片测试：文章（带图片）/bg-2.jpg" alt="logo">失败！<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1.首先hexo目录下 git bash执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure><p>2.新建一篇博客，在post文件下会有和文章名一致的目录名，将图片放在里面<br>3.打开文章文件，在需要插入图片的地方添加代码：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](bg-2.jpg)</span><br></pre></td></tr></table></figure><p>就ok。</p><h3 id="顺便说一句评论的问题"><a href="#顺便说一句评论的问题" class="headerlink" title="顺便说一句评论的问题"></a>顺便说一句评论的问题</h3><p>现在想评论只有一个方法：加载页面的时候马上拉到底部（有多快就多快），然后就会有加载的图标出现，等1-2s就有了。目前只有微信登录后才能评论。<br>加载完成如下（手机端也一样的方法）：</p><p><img src="/2019/07/15/图片测试/comments.png" alt></p>]]></content>
     
@@ -53,7 +53,7 @@
     
     </summary>
     
-      <category term="技术!" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
