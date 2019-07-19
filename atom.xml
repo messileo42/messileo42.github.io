@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Binjiang&#39;s BLOG</title>
+  
+  <subtitle>劝君莫惜金缕衣，劝君惜取少年时。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-07-18T08:40:57.137Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>MessiLeo42</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo-yilia主题背景图片填坑</title>
+    <link href="http://yoursite.com/2019/07/17/hexo-yilia%E4%B8%BB%E9%A2%98%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%A1%AB%E5%9D%91/"/>
+    <id>http://yoursite.com/2019/07/17/hexo-yilia主题背景图片填坑/</id>
+    <published>2019-07-17T02:57:02.000Z</published>
+    <updated>2019-07-18T08:40:57.137Z</updated>
+    
+    <content type="html"><![CDATA[<p>网上查了很多hexo背景图片的文章，都没有yilia主题的，于是自己决定把坑填上。</p><a id="more"></a><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>因为查了很多都是nexT主题的背景图片添加，没有一篇yilia的，可能是太简单了吧。那些大佬懒得写，就由我来补上。</p><h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>打开路径<strong>Hexo\themes\yilia\layout</strong>下的<strong>layout.ejs</strong>文件。</p><h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>在body标签内添加行内样式：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>  <span class="attr">style</span>=<span class="string">"background: url(https://w.wallhaven.cc/full/gj/wallhaven-gjlxke.png); background-size: cover;background-repeat: no-repeat;opacity: 0.85"</span>&gt;</span></span><br></pre></td></tr></table></figure><p>解释：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">background: url();//路径，我是添加的网上的图片，直接加图片路径。如果想添加本地的，路径太麻烦，而且图片加在哪个文件夹里不明确，建议用网上的图片，路径挂了直接换个路径。</span><br><span class="line">background-size: cover;//表示图片根据屏幕大小自适应占满整个屏</span><br><span class="line">background-repeat: no-repeat;//如果图片小的话会增加很多个相同的来铺满页面，no-repeat表示不平铺。</span><br><span class="line">opacity: 0.85;//透明度，根据自己的喜好调。</span><br></pre></td></tr></table></figure><h3 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h3><p>部署：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure><p>完成！</p><p><strong>建议：</strong>在使用 <code>hexo g</code> 部署之后，可以先使用 <code>hexo s</code> 运行本地站点，然后在浏览器输入地址 <a href="http://lacolhost:4000/" target="_blank" rel="noopener">http://lacolhost:4000/</a> 查看运行结果，检查无误后再使用 <code>hexo d</code> 发布。</p><h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>其实就是html的基础，如果是其他的注意应该也是通用的，只需要找到对应<strong>Hexo\themes\your theme\layout</strong>设置整个页面的layout文件。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;网上查了很多hexo背景图片的文章，都没有yilia主题的，于是自己决定把坑填上。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo文章内插入图片</title>
+    <link href="http://yoursite.com/2019/07/15/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/"/>
+    <id>http://yoursite.com/2019/07/15/图片测试/</id>
+    <published>2019-07-15T02:58:38.000Z</published>
+    <updated>2019-07-18T08:43:39.328Z</updated>
+    
+    <content type="html"><![CDATA[<p>hexo图片插入方式</p><a id="more"></a><h3 id="第一种方式："><a href="#第一种方式：" class="headerlink" title="第一种方式："></a>第一种方式：</h3><img src="/2019/07/15/图片测试/07/15/图片测试/bg-2.jpg" title="This is an image"><p>失败！</p><h3 id="第二种方式-bg-2-jpg"><a href="#第二种方式-bg-2-jpg" class="headerlink" title="第二种方式![](bg-2.jpg)"></a>第二种方式<code>![](bg-2.jpg)</code></h3><p><img src="/2019/07/15/图片测试/bg-2.jpg" alt><br>成功！</p><h3 id="第三种方式-lt-img-src-quot-2019-07-15-图片测试：文章（带图片）-bg-2-jpg-quot-alt-quot-logo-quot-gt-："><a href="#第三种方式-lt-img-src-quot-2019-07-15-图片测试：文章（带图片）-bg-2-jpg-quot-alt-quot-logo-quot-gt-：" class="headerlink" title="第三种方式&lt;img src=&quot;2019\07\15\图片测试：文章（带图片）/bg-2.jpg&quot; alt=&quot;logo&quot;&gt;："></a>第三种方式<code>&lt;img src=&quot;2019\07\15\图片测试：文章（带图片）/bg-2.jpg&quot; alt=&quot;logo&quot;&gt;</code>：</h3><img src="/2019/07/15/图片测试/07\15\图片测试：文章（带图片）/bg-2.jpg" alt="logo">失败！<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1.首先hexo目录下 git bash执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure><p>2.新建一篇博客，在post文件下会有和文章名一致的目录名，将图片放在里面<br>3.打开文章文件，在需要插入图片的地方添加代码：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](bg-2.jpg)</span><br></pre></td></tr></table></figure><p>就ok。</p><h3 id="顺便说一句评论的问题"><a href="#顺便说一句评论的问题" class="headerlink" title="顺便说一句评论的问题"></a>顺便说一句评论的问题</h3><p>现在想评论只有一个方法：加载页面的时候马上拉到底部（有多快就多快），然后就会有加载的图标出现，等1-2s就有了。目前只有微信登录后才能评论。<br>加载完成如下（手机端也一样的方法）：</p><p><img src="/2019/07/15/图片测试/comments.png" alt></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;hexo图片插入方式&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术!" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+      <category term="test" scheme="http://yoursite.com/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开博第一篇--总结及牢骚</title>
+    <link href="http://yoursite.com/2019/07/14/%E5%BC%80%E5%8D%9A%E7%AC%AC%E4%B8%80%E7%AF%87-%E6%80%BB%E7%BB%93%E5%8F%8A%E7%89%A2%E9%AA%9A/"/>
+    <id>http://yoursite.com/2019/07/14/开博第一篇-总结及牢骚/</id>
+    <published>2019-07-14T12:40:13.000Z</published>
+    <updated>2019-07-15T05:47:26.318Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="欢迎"><a href="#欢迎" class="headerlink" title="欢迎"></a>欢迎</h3><p>欢迎来到我的博客，感谢hexo以及yilia主题的开发者。作为刚刚毕业的程序员，以后这里就是我的小窝了，我会不定时发我的牢骚以及技术相关的东西。同时希望你能得到你想要的。</p><a id="more"></a>    <br>    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=108306&auto=1&height=66"></iframe><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;经过4天断断续续的搞这个博客（平时要上班，只能用零碎的时间），现在总算是达到我心目中的最低标准了。博客搭建只花了一天，但是域名和评论系统一共花了3天时间。但是很难受，评论还是没搞好，手机端倒是能出来但也评论不了，后面等valine实名制通过了用那个，大概下周就有了。后面零零碎碎的样式的东西也会改变，也许你每次来都有新变化哦。<br>&nbsp;&nbsp;&nbsp;&nbsp;下面我就先说说搭建过程以及这段时间的….emmmm…心历路程？</p><h3 id="搭建的心得"><a href="#搭建的心得" class="headerlink" title="搭建的心得"></a>搭建的心得</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;先说说为什么突然想起自己建一个博客吧。之前逛v2ex的时候无意间看到一个叫“程序员必须要有自己的博客吗”的帖子，进去看了看大佬们的看法，我觉得说得最有道理的一条是:<strong>“个人博客有没有必要，跟是不是程序员没有关系，跟你喜不喜欢写东西有关。”</strong>的确，即使你不是程序员，你也可以通过网上的教程一步一步搭一个博客，重点是你喜欢写点东西。我就是这样想的，就想有个自己的窝发泻情绪，哪怕只有我自己看。比如现在，哈哈哈哈哈。<br>&nbsp;&nbsp;然后就是看教程，跟着搭，基本没遇到什么问题，就是<em>域名——github pages</em>的建立没搞过有点不太理解，不过照着做完回想起来都还好，如果你真就是给自己看的，你可以不放github上，自己每次看就开本地服务器就行。有了整个架构以后，你可以改主题，比如我现在用的yilia主题，其中你们看到的每个模块也许都要自己重新弄，有的用的三方插件，我后面会写专门的文章来介绍这些。<br>Anyway，现在也算是完成了一个小目标了。</p><h3 id="牢骚"><a href="#牢骚" class="headerlink" title="牢骚"></a>牢骚</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;其实建这个博客有一大部分原因是因为我从内心来说是很孤独的人，有话总憋不住，但是天蝎座，你懂的。所以放在这里吧，情绪也好，孤独也罢，总算是有个地方安放，也许你发现了，这边文章贴的音乐前面讲了一大堆都没唱，也许你进来就把他关了<strong>╮(╯▽╰)╭</strong>，现在打开听听他说的，就是我现在想说的，哎….什么是对的人呢，也许总在下一个，我没jj那么乐观，至少现在来说。<strong><em>“一个又一个，排队等缘分，前面丢，后面捡，捡到变恋人，丢的变路人。”</em></strong>真的就没有完美的两个人，总会出现问题，但是为什么这么多年还是没能磨合好呢，还是把双方都伤了。<strong><em>“一个就一个 手空着就开车。寂寞就先晾着，坚强是种天份。直到更好的下一个。”</em></strong>下一个真的就能保证比这个好？<br>&nbsp;&nbsp;&nbsp;&nbsp;哎，就这样吧，写不下去了，情绪上头了。<br>（可以听听这首歌，拉到04:30开始）</p><h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;我写了东西从来不马上看第二遍，感觉会很羞耻，啰嗦和语法不通见谅，开心就好，不想束缚自己。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;欢迎&quot;&gt;&lt;a href=&quot;#欢迎&quot; class=&quot;headerlink&quot; title=&quot;欢迎&quot;&gt;&lt;/a&gt;欢迎&lt;/h3&gt;&lt;p&gt;欢迎来到我的博客，感谢hexo以及yilia主题的开发者。作为刚刚毕业的程序员，以后这里就是我的小窝了，我会不定时发我的牢骚以及技术相关的东西。同时希望你能得到你想要的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="总结" scheme="http://yoursite.com/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="牢骚" scheme="http://yoursite.com/tags/%E7%89%A2%E9%AA%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://yoursite.com/2019/07/10/test/"/>
+    <id>http://yoursite.com/2019/07/10/test/</id>
+    <published>2019-07-10T08:51:00.000Z</published>
+    <updated>2019-07-13T06:25:58.418Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="基础测试"><a href="#基础测试" class="headerlink" title="基础测试"></a>基础测试</h1><a id="more"></a><br><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="260" height="86" src="//music.163.com/outchain/player?type=2&id=22712173&auto=1&height=66"></iframe><br># 一级标题<p><em>斜体</em></p><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p><strong>粗体</strong></p><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p><strong><em>加粗斜体</em></strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">system.out.printf(<span class="string">"多行代码！"</span>);</span><br></pre></td></tr></table></figure><h3 id="三级标题2"><a href="#三级标题2" class="headerlink" title="三级标题2"></a>三级标题2</h3><h2 id="试试"><a href="#试试" class="headerlink" title=" 试试"></a> 试试</h2><p> 分割线<br>+++<br> 分割线二</p><hr><p>完毕</p><ol><li>有序列表项1</li><li>有序列表项2</li></ol><h2 id="二级标题2"><a href="#二级标题2" class="headerlink" title="二级标题2"></a>二级标题2</h2><ul><li>无序列表项1</li><li>无序列表项2</li></ul><ul><li>无序列表项1</li><li>无序列表项2</li></ul><ul><li>无序列表项1</li><li>无序列表项2</li></ul><h1 id="一级标题2表格"><a href="#一级标题2表格" class="headerlink" title="一级标题2表格"></a>一级标题2表格</h1><table><thead><tr><th>表头1</th><th>表头2</th></tr></thead><tbody><tr><td>内容11</td><td>** 内容12 **</td></tr><tr><td>内容21</td><td>内容22</td></tr></tbody></table><h2 id="二级标题-链接"><a href="#二级标题-链接" class="headerlink" title="二级标题 链接"></a>二级标题 链接</h2><p><a href="www.baidu.com">示例链接</a><br>&lt;<a href="http://www.baidu.com&gt;" target="_blank" rel="noopener">www.baidu.com&gt;</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;基础测试&quot;&gt;&lt;a href=&quot;#基础测试&quot; class=&quot;headerlink&quot; title=&quot;基础测试&quot;&gt;&lt;/a&gt;基础测试&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="test" scheme="http://yoursite.com/tags/test/"/>
+    
+      <category term="messi" scheme="http://yoursite.com/tags/messi/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>

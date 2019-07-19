@@ -8,22 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Hexo文章内插入图片 | Binjiang&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="messi!">
-<meta name="keywords" content="test,hexo">
+  <meta name="description" content="hexo图片插入方式">
+<meta name="keywords" content="hexo,test">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo文章内插入图片">
 <meta property="og:url" content="http://yoursite.com/2019/07/15/图片测试/index.html">
 <meta property="og:site_name" content="Binjiang&#39;s BLOG">
-<meta property="og:description" content="messi!">
+<meta property="og:description" content="hexo图片插入方式">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/07/15/图片测试/07/15/图片测试/bg-2.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/07/15/图片测试/bg-2.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/07/15/图片测试/07/15/图片测试：文章（带图片）/bg-2.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/07/15/图片测试/comments.png">
-<meta property="og:updated_time" content="2019-07-15T05:41:34.768Z">
+<meta property="og:updated_time" content="2019-07-18T08:43:39.328Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo文章内插入图片">
-<meta name="twitter:description" content="messi!">
+<meta name="twitter:description" content="hexo图片插入方式">
 <meta name="twitter:image" content="http://yoursite.com/2019/07/15/图片测试/07/15/图片测试/bg-2.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Binjiang&#39;s BLOG" type="application/atom+xml">
@@ -197,8 +197,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>messi!</p>
+        <p>hexo图片插入方式</p>
 <a id="more"></a>
+
 <h3 id="第一种方式："><a href="#第一种方式：" class="headerlink" title="第一种方式："></a>第一种方式：</h3><img src="/2019/07/15/图片测试/07/15/图片测试/bg-2.jpg" title="This is an image">
 <p>失败！</p>
 <h3 id="第二种方式-bg-2-jpg"><a href="#第二种方式-bg-2-jpg" class="headerlink" title="第二种方式![](bg-2.jpg)"></a>第二种方式<code>![](bg-2.jpg)</code></h3><p><img src="/2019/07/15/图片测试/bg-2.jpg" alt><br>成功！</p>
@@ -206,10 +207,10 @@
 失败！
 
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1.首先hexo目录下 git bash执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
 
-<p>2.新建一篇博客，在post文件下会有和文章名一致的目录名，将图片放在里面<br>直接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](<span class="built_in">bg</span>-2.jpg)</span><br></pre></td></tr></table></figure>
+<p>2.新建一篇博客，在post文件下会有和文章名一致的目录名，将图片放在里面<br>3.打开文章文件，在需要插入图片的地方添加代码：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](bg-2.jpg)</span><br></pre></td></tr></table></figure>
 
 <p>就ok。</p>
 <h3 id="顺便说一句评论的问题"><a href="#顺便说一句评论的问题" class="headerlink" title="顺便说一句评论的问题"></a>顺便说一句评论的问题</h3><p>现在想评论只有一个方法：加载页面的时候马上拉到底部（有多快就多快），然后就会有加载的图标出现，等1-2s就有了。目前只有微信登录后才能评论。<br>加载完成如下（手机端也一样的方法）：</p>
@@ -256,11 +257,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">test</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">test</a>
         		</li>
       		
 		</ul>
@@ -272,7 +273,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/技术//" class="article-tag-list-link color3">技术</a>
+        			<a href="/categories/技术//" class="article-tag-list-link color4">技术!</a>
         		</li>
       		
 		</ul>
@@ -508,11 +509,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">test</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color5">test</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,5 +662,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.85},"log":false});</script></body>
 </html>
