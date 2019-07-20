@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-18T08:40:57.137Z</updated>
+  <updated>2019-07-20T08:06:11.913Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>目前发现的bug</title>
+    <link href="http://yoursite.com/2019/07/20/%E7%9B%AE%E5%89%8D%E5%8F%91%E7%8E%B0%E7%9A%84bug/"/>
+    <id>http://yoursite.com/2019/07/20/目前发现的bug/</id>
+    <published>2019-07-20T07:33:48.000Z</published>
+    <updated>2019-07-20T08:06:11.913Z</updated>
+    
+    <content type="html"><![CDATA[<p><input type="checkbox" name="bugs" value> livere评论系统：文章长了不自动给加载！必须迅速拉到底才会加载。</p><p><input type="checkbox" name="bugs" value> ”所有文章|友链|关于我“还有标签在主页点开是空白，只有在文章内点才有效果。（这个问题太奇葩，感觉是跟主页样式冲突了）</p><a id="more"></a><p>有时间再解决。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;input type=&quot;checkbox&quot; name=&quot;bugs&quot; value&gt; livere评论系统：文章长了不自动给加载！必须迅速拉到底才会加载。&lt;/p&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; name=&quot;bugs&quot; value&gt; ”所有文章|友链|关于我“还有标签在主页点开是空白，只有在文章内点才有效果。（这个问题太奇葩，感觉是跟主页样式冲突了）&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo-yilia主题背景图片填坑</title>
