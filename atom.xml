@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-20T08:06:11.913Z</updated>
+  <updated>2019-08-10T01:35:26.813Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,18 +17,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ASP.NET core文件上传与下载</title>
+    <link href="http://yoursite.com/2019/08/09/ASP-NETcore%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD/"/>
+    <id>http://yoursite.com/2019/08/09/ASP-NETcore文件上传与下载/</id>
+    <published>2019-08-09T07:06:44.000Z</published>
+    <updated>2019-08-10T01:35:26.813Z</updated>
+    
+    <content type="html"><![CDATA[<p>Asp .Net Core文件操作。</p><a id="more"></a><h2 id="页面："><a href="#页面：" class="headerlink" title="页面："></a>页面：</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-sm-3 control-label"</span>&gt;</span>附件：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-2"</span> <span class="attr">id</span>=<span class="string">"annexDiv"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"files"</span>&gt;</span></span><br><span class="line">        //…（多个file类型的input,name属性要一致）</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="后台："><a href="#后台：" class="headerlink" title="后台："></a>后台：</h3><blockquote><h5 id="接收数据："><a href="#接收数据：" class="headerlink" title="接收数据："></a>接收数据：</h5><p>List<iformfile> files参数名与input 的name属性一致。</iformfile></p></blockquote><blockquote><h5 id="保存路径："><a href="#保存路径：" class="headerlink" title="保存路径："></a>保存路径：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;var path =Directory.GetCurrentDirectory();</span><br><span class="line">&gt;path = path.Replace(&quot;bin\\Debug&quot;, &quot;&quot;);//去掉bin\Debug</span><br><span class="line">&gt;</span><br><span class="line">&gt;var tempPath= &quot;WorkLogFiles\\&quot;+DateTime.Now.Year + &quot;\\&quot; +DateTime.Now.Month;</span><br><span class="line">&gt;</span><br><span class="line">&gt;path = @path + &quot;\\wwwroot\\&quot; + tempPath;//最终保存路径</span><br><span class="line">&gt;if (!Directory.Exists(path)) Directory.CreateDirectory(path);</span><br><span class="line">&gt;//判断是否存在该路径，如没有则创建该路径</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><blockquote><h5 id="保存文件："><a href="#保存文件：" class="headerlink" title="保存文件："></a>保存文件：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;foreach (var file in files)//遍历文件集合，使用文件流保存文件到本地</span><br><span class="line">&gt;&#123; </span><br><span class="line">&gt;   if (file.Length &gt; 0)</span><br><span class="line">&gt;   &#123;</span><br><span class="line">&gt;       using (var stream = new FileStream(filePath, FileMode.Create))//生成流</span><br><span class="line">&gt;       &#123;</span><br><span class="line">&gt;           await file.CopyToAsync(stream);//保存文件</span><br><span class="line">&gt;       &#125;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><blockquote><h5 id="删除文件："><a href="#删除文件：" class="headerlink" title="删除文件："></a>删除文件：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;try</span><br><span class="line">&gt;&#123;</span><br><span class="line">&gt;    File.Delete(path);//path：文件路径（包含文件名）</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;catch(Exception e)</span><br><span class="line">&gt;&#123;</span><br><span class="line">&gt;   throw e;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><blockquote></blockquote><h3 id="下载："><a href="#下载：" class="headerlink" title="下载："></a>下载：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> filePath = <span class="string">"http://149.129.xx.xx/"</span> + annex.AnnexPath;<span class="comment">//如果为本地服务器，需加上端口号。</span></span><br></pre></td></tr></table></figure><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-sm-3 control-label"</span>&gt;</span>下载：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-8"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"@filePath"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>@annex.AnnexName <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><p><em>注意：</em></p><p>target=”_blank”属性是为了避免文件为图片时跳转不会原来页面（大佬同事告诉我的），我理解就是新开窗口下载，不然本页面会成为下载页面。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Asp .Net Core文件操作。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term=".NetCore" scheme="http://yoursite.com/tags/NetCore/"/>
+    
+  </entry>
+  
+  <entry>
     <title>目前发现的bug</title>
     <link href="http://yoursite.com/2019/07/20/%E7%9B%AE%E5%89%8D%E5%8F%91%E7%8E%B0%E7%9A%84bug/"/>
     <id>http://yoursite.com/2019/07/20/目前发现的bug/</id>
     <published>2019-07-20T07:33:48.000Z</published>
-    <updated>2019-07-20T08:06:11.913Z</updated>
+    <updated>2019-08-10T01:46:40.029Z</updated>
     
-    <content type="html"><![CDATA[<p><input type="checkbox" name="bugs" value> livere评论系统：文章长了不自动给加载！必须迅速拉到底才会加载。</p><p><input type="checkbox" name="bugs" value> ”所有文章|友链|关于我“还有标签在主页点开是空白，只有在文章内点才有效果。（这个问题太奇葩，感觉是跟主页样式冲突了）</p><a id="more"></a><p>有时间再解决。</p>]]></content>
+    <content type="html"><![CDATA[<p><input type="checkbox" name="bugs" value> livere评论系统：文章长了不自动给加载！必须迅速拉到底才会加载。</p><p><input type="checkbox" name="bugs" value> ”所有文章|友链|关于我“还有标签在主页点开是空白，只有在文章内点才有效果。（这个问题太奇葩，感觉是跟主页样式冲突了）</p><p><input type="checkbox" name="bugs" value>代码颜色被我调崩了！！复制出去看吧。</p><a id="more"></a><p>有时间再解决。（一直没时间）</p>]]></content>
     
     <summary type="html">
     
       &lt;p&gt;&lt;input type=&quot;checkbox&quot; name=&quot;bugs&quot; value&gt; livere评论系统：文章长了不自动给加载！必须迅速拉到底才会加载。&lt;/p&gt;
 &lt;p&gt;&lt;input type=&quot;checkbox&quot; name=&quot;bugs&quot; value&gt; ”所有文章|友链|关于我“还有标签在主页点开是空白，只有在文章内点才有效果。（这个问题太奇葩，感觉是跟主页样式冲突了）&lt;/p&gt;
+&lt;p&gt;&lt;input type=&quot;checkbox&quot; name=&quot;bugs&quot; value&gt;代码颜色被我调崩了！！复制出去看吧。&lt;/p&gt;
     
     </summary>
     
@@ -88,7 +111,7 @@
     <link href="http://yoursite.com/2019/07/14/%E5%BC%80%E5%8D%9A%E7%AC%AC%E4%B8%80%E7%AF%87-%E6%80%BB%E7%BB%93%E5%8F%8A%E7%89%A2%E9%AA%9A/"/>
     <id>http://yoursite.com/2019/07/14/开博第一篇-总结及牢骚/</id>
     <published>2019-07-14T12:40:13.000Z</published>
-    <updated>2019-07-15T05:47:26.318Z</updated>
+    <updated>2019-08-09T10:17:59.898Z</updated>
     
     <content type="html"><![CDATA[<h3 id="欢迎"><a href="#欢迎" class="headerlink" title="欢迎"></a>欢迎</h3><p>欢迎来到我的博客，感谢hexo以及yilia主题的开发者。作为刚刚毕业的程序员，以后这里就是我的小窝了，我会不定时发我的牢骚以及技术相关的东西。同时希望你能得到你想要的。</p><a id="more"></a>    <br>    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=108306&auto=1&height=66"></iframe><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;经过4天断断续续的搞这个博客（平时要上班，只能用零碎的时间），现在总算是达到我心目中的最低标准了。博客搭建只花了一天，但是域名和评论系统一共花了3天时间。但是很难受，评论还是没搞好，手机端倒是能出来但也评论不了，后面等valine实名制通过了用那个，大概下周就有了。后面零零碎碎的样式的东西也会改变，也许你每次来都有新变化哦。<br>&nbsp;&nbsp;&nbsp;&nbsp;下面我就先说说搭建过程以及这段时间的….emmmm…心历路程？</p><h3 id="搭建的心得"><a href="#搭建的心得" class="headerlink" title="搭建的心得"></a>搭建的心得</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;先说说为什么突然想起自己建一个博客吧。之前逛v2ex的时候无意间看到一个叫“程序员必须要有自己的博客吗”的帖子，进去看了看大佬们的看法，我觉得说得最有道理的一条是:<strong>“个人博客有没有必要，跟是不是程序员没有关系，跟你喜不喜欢写东西有关。”</strong>的确，即使你不是程序员，你也可以通过网上的教程一步一步搭一个博客，重点是你喜欢写点东西。我就是这样想的，就想有个自己的窝发泻情绪，哪怕只有我自己看。比如现在，哈哈哈哈哈。<br>&nbsp;&nbsp;然后就是看教程，跟着搭，基本没遇到什么问题，就是<em>域名——github pages</em>的建立没搞过有点不太理解，不过照着做完回想起来都还好，如果你真就是给自己看的，你可以不放github上，自己每次看就开本地服务器就行。有了整个架构以后，你可以改主题，比如我现在用的yilia主题，其中你们看到的每个模块也许都要自己重新弄，有的用的三方插件，我后面会写专门的文章来介绍这些。<br>Anyway，现在也算是完成了一个小目标了。</p><h3 id="牢骚"><a href="#牢骚" class="headerlink" title="牢骚"></a>牢骚</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;其实建这个博客有一大部分原因是因为我从内心来说是很孤独的人，有话总憋不住，但是天蝎座，你懂的。所以放在这里吧，情绪也好，孤独也罢，总算是有个地方安放，也许你发现了，这边文章贴的音乐前面讲了一大堆都没唱，也许你进来就把他关了<strong>╮(╯▽╰)╭</strong>，现在打开听听他说的，就是我现在想说的，哎….什么是对的人呢，也许总在下一个，我没jj那么乐观，至少现在来说。<strong><em>“一个又一个，排队等缘分，前面丢，后面捡，捡到变恋人，丢的变路人。”</em></strong>真的就没有完美的两个人，总会出现问题，但是为什么这么多年还是没能磨合好呢，还是把双方都伤了。<strong><em>“一个就一个 手空着就开车。寂寞就先晾着，坚强是种天份。直到更好的下一个。”</em></strong>下一个真的就能保证比这个好？<br>&nbsp;&nbsp;&nbsp;&nbsp;哎，就这样吧，写不下去了，情绪上头了。<br>（可以听听这首歌，拉到04:30开始）</p><h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;我写了东西从来不马上看第二遍，感觉会很羞耻，啰嗦和语法不通见谅，开心就好，不想束缚自己。</p>]]></content>
     
