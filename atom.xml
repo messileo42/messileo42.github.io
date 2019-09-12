@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-13T01:55:18.543Z</updated>
+  <updated>2019-09-12T10:26:48.530Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bulk Insert插入大量数据</title>
+    <link href="http://yoursite.com/2019/09/12/Insert%E6%8F%92%E5%85%A5%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/"/>
+    <id>http://yoursite.com/2019/09/12/Insert插入大量数据/</id>
+    <published>2019-09-12T10:02:34.000Z</published>
+    <updated>2019-09-12T10:26:48.530Z</updated>
+    
+    <content type="html"><![CDATA[<p>sql server插入大量数据时，采用Bulk Insert效率是一种高效的方法。</p><a id="more"></a><h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BULK <span class="keyword">INSERT</span> schema_name . table_name </span><br><span class="line"><span class="keyword">FROM</span> <span class="string">'data_file'</span> </span><br><span class="line"><span class="keyword">WITH</span> </span><br><span class="line">(</span><br><span class="line">FIELDTERMINATOR = <span class="string">'field_terminator'</span>,</span><br><span class="line">ROWTERMINATOR = <span class="string">'row_terminator'</span>，</span><br><span class="line">DATAFILETYPE=‘WideChar’</span><br><span class="line">);</span><br></pre></td></tr></table></figure><ul><li><strong>‘</strong> <strong>data_file ‘</strong>：指定数据文件的full path，bulk insert命令将数据从该文件导入到Target Table中</li><li><strong>ROWTERMINATOR</strong> = ‘row_terminator’ ： 指定分隔行的字符，使用该字符来分割行（Row）；</li><li><strong>FIELDTERMINATOR</strong> = ‘field_terminator’ ：指定分隔字段的字符，使用该字符来分割字段（Field或Column）；</li></ul><h3 id="数据源文件："><a href="#数据源文件：" class="headerlink" title="数据源文件："></a>数据源文件：</h3><p>一般为.txt和.csv格式。</p><p>我们以.csv为例，首先就是要将所需插入的数据的行和列按照我们的语法要求进行分割，这是可以自己定义的。比如：</p><p><strong>例子1</strong></p><p>数据格式为：</p><p>20270908,2027,’9’,’8’,251,3,37,1,1,,|20270909,2027,’9’,’9’,252,4,37,1,1,,</p><p>语法为：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BULK <span class="keyword">INSERT</span> dbo.test </span><br><span class="line"><span class="keyword">FROM</span> <span class="string">'D:\test.csv'</span> </span><br><span class="line"><span class="keyword">WITH</span> </span><br><span class="line">(</span><br><span class="line">FIELDTERMINATOR = <span class="string">','</span>,</span><br><span class="line">ROWTERMINATOR = <span class="string">'|'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure><p><strong>例子2</strong></p><p>数据格式为：</p><p>20270908    2027      ‘9’   ‘8’   251        3     37   1     1,    ,</p><p>20270909    2027      ‘9’   ‘9’   252        4     37   1     1,    ,</p><p>语法为：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BULK <span class="keyword">INSERT</span> dbo.test </span><br><span class="line"><span class="keyword">FROM</span> <span class="string">'D:\test.csv'</span> </span><br><span class="line"><span class="keyword">WITH</span> </span><br><span class="line">(</span><br><span class="line">FIELDTERMINATOR = <span class="string">'\t'</span>,</span><br><span class="line">ROWTERMINATOR = <span class="string">'\n'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure><p>注意观察上面例子数据格式，最后两个字段没有值,如果有些Column没有值，设置 KEEPNULLS   选项，表示将该column设置为NULL。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bulk <span class="keyword">insert</span> dbo.test</span><br><span class="line"><span class="keyword">from</span> <span class="string">'D:\test.csv'</span></span><br><span class="line"><span class="keyword">WITH</span>(</span><br><span class="line">    FIELDTERMINATOR = <span class="string">'\t'</span>,</span><br><span class="line">    ROWTERMINATOR = <span class="string">'\n'</span>,</span><br><span class="line">    KEEPNULLS</span><br><span class="line">);</span><br></pre></td></tr></table></figure><h3 id="其他参数："><a href="#其他参数：" class="headerlink" title="其他参数："></a>其他参数：</h3><ul><li><strong>‘</strong> <strong>data_file ‘</strong>：指定数据文件的full path，bulk insert命令将数据从该文件导入到Target Table中</li><li><strong>ROWTERMINATOR</strong> = ‘row_terminator’ ： 指定分隔行的字符，使用该字符来分割行（Row）；</li><li><strong>FIELDTERMINATOR</strong> = ‘field_terminator’ ：指定分隔字段的字符，使用该字符来分割字段（Field或Column）；</li><li><strong>DATAFILETYPE</strong> = { ‘char’ | ‘native’| ‘widechar’ | ‘widenative’ }：指定data file编码（Encoding）的类型，推荐使用widechar编码；</li><li><strong>CODEPAGE</strong> = { ‘ACP’ | ‘OEM’ | ‘RAW’ | ‘code_page’ } ：如果 data file 中含有单字节（char或varchar）字符数据，使用CodePage参数指定字符列的CodePage；</li><li><strong>BATCHSIZE</strong> = batch_size ：指定一个batch包含的数据行数量，在将数据复制到Table中时，每一个Batch作为一个单独的事务，如果一个batch复制失败，那么事务回滚。默认情况下，data file中的所有数据作为一个batch。Specifies the number of rows in a batch. Each batch is copied to the server as one transaction. If this fails, SQL Server commits or rolls back the transaction for every batch. By default, all data in the specified data file is one batch. </li><li>CHECK_CONSTRAINTS ：指定在执行bulk insert操作期间，必须检查插入的数据是否满足Target Table上的所有约束。如果没有指定 CHECK_CONSTRAINTS 选项，则所有 CHECK 和 FOREIGN KEY 约束都将被忽略，并且，在此操作之后，表上的所有约束将标记为不可信（not-trusted）；   </li><li>FIRE_TRIGGERS ：指定是否启动Insert触发器，如果指定该选项，每个batch成功插入后，会执行Insert触发器；如果不指定该选项，不会执行Insert 触发器；</li><li>KEEPIDENTITY ：指定将data file中的标识值插入到标识列（Identity Column）中，如果不指定KeepIdentity选项，Target Table中的ID列会自动分配唯一的标识值；  </li><li>KEEPNULLS：指定在执行bulk insert操作期间，空列（Empty Columns）应保留NULL值，而不是插入列的默认值</li><li>TABLOCK ：指定在执行bulk insert操作期间，获取一个表级锁，持有表级锁，能够减少锁竞争（Lock Contention)，提高导入性能</li></ul><p>参考：</p><p><a href="https://www.cnblogs.com/ljhdo/p/5604912.html" title="参考链接" target="_blank" rel="noopener">参考链接</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;sql server插入大量数据时，采用Bulk Insert效率是一种高效的方法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="sql server" scheme="http://yoursite.com/tags/sql-server/"/>
+    
+  </entry>
   
   <entry>
     <title>ASP.NET core文件上传与下载</title>
